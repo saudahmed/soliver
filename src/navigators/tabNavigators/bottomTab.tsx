@@ -55,7 +55,7 @@ const BottomTabNavigator = () => {
         },
         tabBarActiveTintColor: theme.palette.primary.main,
         tabBarInactiveTintColor: theme.palette.secondary.dark,
-        tabBarLabel: ({ color, focused }) => {
+        tabBarLabel: ({ color }) => {
           let label = "";
 
           if (route.name === "HomeTab") {
@@ -70,7 +70,11 @@ const BottomTabNavigator = () => {
             label = "Konto";
           }
 
-          return <Text style={{ color, fontSize: 11 }}>{label}</Text>;
+          return (
+            <Text style={{ color, fontSize: theme.responsive(6) }}>
+              {label}
+            </Text>
+          );
         },
       })}
     >
