@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RootStackParamList } from "@src/types/rootStackParams";
+import { RootStackParamList } from "src/types/rootStackParams";
 import Categories from "src/pages/categories/Categories";
 
 import { ITheme } from "src/assets/themes";
@@ -38,8 +38,8 @@ const StackNavigator = () => {
           name="CategoriesScreen"
           component={Categories}
           options={() => ({
-            title: "",
-            headerShown: false,
+            title: "New",
+            headerShown: true,
           })}
         />
       </Stack.Group>

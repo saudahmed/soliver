@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RootStackParamList } from "@src/types/rootStackParams";
+import { RootStackParamList } from "src/types/rootStackParams";
 import WishList from "src/pages/wishList/WishList";
 
 import { ITheme } from "src/assets/themes";
