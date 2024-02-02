@@ -36,7 +36,7 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   background: {
     backgroundColor: theme.palette.background.main,
     flex: 1,
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(0),
   },
 }));
 
@@ -56,7 +56,7 @@ const SafeAreaContainer = ({
       {...rest}
       style={styles.background}
       edges={[...edges, "right", "left"]}
-      testID="test-container"
+      testID="safearea-container"
     >
       {/* Set status bar color based on dark mode */}
       <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />

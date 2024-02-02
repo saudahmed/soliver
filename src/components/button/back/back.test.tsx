@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react-native";
-import ButtonBack from "./back";
+import ButtonBack from "./Back";
 
 describe("ButtonBack", () => {
   test("renders correctly", () => {

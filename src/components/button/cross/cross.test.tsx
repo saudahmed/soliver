@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react-native";
-import ButtonCross from "./cross";
+import ButtonCross from "./Cross";
 
 describe("ButtonCross", () => {
   test("renders correctly", () => {

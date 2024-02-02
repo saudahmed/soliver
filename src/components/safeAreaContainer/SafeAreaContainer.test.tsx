@@ -3,34 +3,34 @@ import { render } from "@testing-library/react-native";
 import SafeAreaContainer from "./SafeAreaContainer";
 
 describe("SafeAreaContainer", () => {
-  test("renders children and applies edges", () => {
+  test("renders correctly", () => {
     const { getByTestId } = render(
-      <SafeAreaContainer edges={["top", "bottom"]}>
+      <SafeAreaContainer>
         <Text>Test</Text>
       </SafeAreaContainer>
     );
 
-    const container = getByTestId("test-container");
+    const container = getByTestId("safearea-container");
 
-    // Check if the children are rendered
     expect(container).toBeOnTheScreen();
   });
 
-  test("applies edges", () => {
-    const { getByTestId } = render(
-      <SafeAreaContainer edges={["top", "bottom"]} testID="test-container">
-        <Text>Test</Text>
-      </SafeAreaContainer>
-    );
+  test("applies default styles and edges", () => {
+    const { getByTestId } = render(<SafeAreaContainer />);
 
-    const container = getByTestId("test-container");
+    const container = getByTestId("safearea-container");
 
-    // Check if the edges are applied
+    expect(container.props.style).toEqual({
+      backgroundColor: "#ffffff",
+      flex: 1,
+      paddingTop: 0,
+    });
+
     expect(container.props.edges).toEqual({
-      bottom: "additive",
+      bottom: "off",
       left: "additive",
       right: "additive",
-      top: "additive",
+      top: "off",
     });
   });
 });
