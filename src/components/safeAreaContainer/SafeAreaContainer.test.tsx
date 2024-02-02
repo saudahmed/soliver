@@ -1,6 +1,6 @@
 import { Text, StatusBar } from "react-native";
 import { render } from "@testing-library/react-native";
-import SafeAreaContainer from "./safeAreaContainer";
+import SafeAreaContainer from "./SafeAreaContainer";
 
 describe("SafeAreaContainer", () => {
   test("renders children and applies edges", () => {

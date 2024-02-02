@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 import { render } from "@testing-library/react-native";
-import Container from "./container";
+import Container from "./Container";
 
 describe("Container", () => {
   test("renders correctly", () => {

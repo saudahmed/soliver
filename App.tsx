@@ -5,7 +5,7 @@ import { BottomTabNavigator } from "src/navigators/tabNavigators";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { Container } from "src/components/container";
+import Container from "src/components/container/Container";
 
 SplashScreen.preventAutoHideAsync();
 
