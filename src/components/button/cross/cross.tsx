@@ -8,17 +8,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 /**
  * ButtonCross is a custom button component with a close icon.
  *
- * @component
- *
- * @param {IButton} props - The properties of the ButtonCross component.
- * @param {Function} [props.onPress] - The function to be called when the button is pressed.
- * @param {object} props.rest - Additional TouchableOpacity props to be applied to the underlying TouchableOpacity component.
+ * @param {Function} [props.onButtonPress] - The function to be called when the button is pressed.
+ * @param {object} [props.rest] - Additional TouchableOpacity props to be applied to the underlying TouchableOpacity component.
  *
  * @returns {React.Element} A React element representing the ButtonBack component.
  *
  * @example
  * // Basic usage
- * return <ButtonCross onPress={() => navigation.goBack()} />
+ * return <ButtonCross onButtonPress={() => {}} />
  */
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({

@@ -9,6 +9,8 @@ import ButtonIcon from "src/components/button/icon/icon";
 
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
+import ButtonCircle from "src/components/button/circle/Circle";
+import ButtonColor from "src/components/button/color/Color";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -46,6 +48,40 @@ const Categories = ({
             onButtonPress={() => {}}
           />
         </View>
+      </View>
+      <View style={styles.buttonContainer}>
+        <ButtonCircle
+          iconNameNormal="heart-outline"
+          iconColor="red"
+          iconNamePressed="heart"
+          selected={false}
+          onButtonPress={() => {}}
+        />
+        <ButtonCircle
+          iconNameNormal="heart-outline"
+          iconColor="red"
+          iconNamePressed="heart"
+          selected
+          onButtonPress={() => {}}
+        />
+        <ButtonCircle
+          iconNameNormal="shopping-outline"
+          iconColor="black"
+          iconNamePressed="shopping"
+          selected={false}
+          onButtonPress={() => {}}
+        />
+        <ButtonCircle
+          iconNameNormal="shopping-outline"
+          iconColor="black"
+          iconNamePressed="shopping"
+          selected
+          onButtonPress={() => {}}
+        />
+        <ButtonColor color="red" selected onButtonPress={() => {}} />
+        <ButtonColor color="red" selected={false} onButtonPress={() => {}} />
+        <ButtonColor color="teal" selected onButtonPress={() => {}} />
+        <ButtonColor color="teal" selected={false} onButtonPress={() => {}} />
       </View>
     </Container>
   );

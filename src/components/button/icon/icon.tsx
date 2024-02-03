@@ -2,16 +2,18 @@ import * as React from "react";
 import { Pressable, Text, View } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-import { IButtonLeftIcon } from "src/types/button";
+import { IButtonIcon } from "src/types/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 /**
  * ButtonIcon is a custom button component with an icon and text.
  *
  * @param {Function} [props.onPress] - The function to be called when the button is pressed.
- * @param {string} props.iconPosition - Position icon on left or right.
- * @param {string} props.text - Text to show on the button.
- * @param {boolean} props.border - hide or display the border.
+ * @param {string} [props.iconPosition] - Position icon on left or right.
+ * @param {string} [props.text] - Text to show on the button.
+ * @param {string} [props.iconName] - The name of the icon.
+ * @param {boolean} [props.border] - hide or display the border.
+ *
  * @returns {React.Element} A React element representing the ButtonIcon component.
  *
  * @example
@@ -50,7 +52,7 @@ const ButtonIcon = ({
   border,
   iconPosition,
   iconName,
-}: IButtonLeftIcon) => {
+}: IButtonIcon) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
   const theme = Theme.useTheme();

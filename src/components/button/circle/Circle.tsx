@@ -2,53 +2,64 @@ import * as React from "react";
 import { TouchableOpacity } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-import { IButton } from "src/types/button";
+import { IButtonCircle } from "src/types/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 /**
- * ButtonBack is a custom button component with a back arrow icon.
+ * ButtonCircle is a custom button component with a close icon.
  *
  * @param {Function} [props.onButtonPress] - The function to be called when the button is pressed.
+ * @param {string} [props.iconNamePressed] - The icon name for selected state.
+ * @param {string} [props.iconNameNormal] - The icon name for non-selected state.
+ * @param {string} [props.iconColor] - The icon color.
+ * @param {boolean} [props.selected] - The selected flag to show selected and non-selected state.
  * @param {object} [props.rest] - Additional TouchableOpacity props to be applied to the underlying TouchableOpacity component.
  *
  * @returns {React.Element} A React element representing the ButtonBack component.
  *
  * @example
  * // Basic usage
- * return <ButtonBack onButtonPress={() => navigation.goBack()} />
+ * return <ButtonCircle iconName="heart" onButtonPress={() => {}} />
  */
 
-// Define styles using the Theme provider
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   button: {
-    paddingRight: theme.spacing(2),
-    paddingVertical: theme.spacing(0.5),
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+    borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: theme.palette.common.white,
+    ...theme.shadow,
   },
 }));
 
-const ButtonBack = ({ onButtonPress, ...rest }: IButton) => {
+const ButtonCircle = ({
+  iconNamePressed,
+  iconNameNormal,
+  iconColor,
+  selected,
+  onButtonPress,
+  ...rest
+}: IButtonCircle) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
-  const theme = Theme.useTheme();
 
   return (
     <TouchableOpacity
       {...rest}
       style={styles.button}
       onPress={onButtonPress}
-      testID="button-back"
+      testID="button-circle"
     >
-      {/* Back arrow icon */}
       <MaterialCommunityIcons
-        name={"keyboard-backspace"}
-        size={theme.spacing(2)}
-        color={theme.palette.primary.main}
-        testID="back-arrow-icon"
+        name={selected ? iconNamePressed : iconNameNormal}
+        size={18}
+        color={iconColor}
+        testID="icon-circle"
       />
     </TouchableOpacity>
   );
 };
 
-export default ButtonBack;
+export default ButtonCircle;

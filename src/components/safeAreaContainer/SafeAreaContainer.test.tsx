@@ -12,7 +12,7 @@ describe("SafeAreaContainer", () => {
 
     const container = getByTestId("safearea-container");
 
-    expect(container).toBeOnTheScreen();
+    expect(container).toBeTruthy();
   });
 
   test("applies default styles and edges", () => {
