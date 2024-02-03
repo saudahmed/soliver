@@ -30,13 +30,18 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   },
 }));
 
-const ButtonCross = ({ ...rest }: IButton) => {
+const ButtonCross = ({ onButtonPress, ...rest }: IButton) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
   const theme = Theme.useTheme();
 
   return (
-    <TouchableOpacity {...rest} style={styles.button} testID="button-cross">
+    <TouchableOpacity
+      {...rest}
+      style={styles.button}
+      onPress={onButtonPress}
+      testID="button-cross"
+    >
       {/* Close icon */}
       <MaterialCommunityIcons
         name={"close"}

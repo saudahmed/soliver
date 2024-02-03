@@ -1,7 +1,13 @@
 import { TouchableOpacityProps } from "react-native";
-import React from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export interface IButton extends TouchableOpacityProps {
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  onButtonPress: () => void;
+}
+
+export interface IButtonLeftIcon extends IButton {
+  iconPosition: "left" | "right";
+  text: string;
+  border: boolean;
+  iconName: keyof typeof MaterialCommunityIcons.glyphMap;
 }

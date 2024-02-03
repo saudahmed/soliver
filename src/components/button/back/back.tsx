@@ -8,8 +8,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 /**
  * ButtonBack is a custom button component with a back arrow icon.
  *
- * @component
- *
  * @param {IButton} props - The properties of the ButtonBack component.
  * @param {Function} [props.onPress] - The function to be called when the button is pressed.
  * @param {React.ReactNode} [props.children] - Additional content to be rendered inside the button.
@@ -26,23 +24,28 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   button: {
     paddingRight: theme.spacing(2),
-    paddingVertical: theme.spacing(0.8),
+    paddingVertical: theme.spacing(0.5),
     alignItems: "center",
     justifyContent: "center",
   },
 }));
 
-const ButtonBack = ({ ...rest }: IButton) => {
+const ButtonBack = ({ onButtonPress, ...rest }: IButton) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
   const theme = Theme.useTheme();
 
   return (
-    <TouchableOpacity {...rest} style={styles.button} testID="button-back">
+    <TouchableOpacity
+      {...rest}
+      style={styles.button}
+      onPress={onButtonPress}
+      testID="button-back"
+    >
       {/* Back arrow icon */}
       <MaterialCommunityIcons
         name={"keyboard-backspace"}
-        size={18}
+        size={theme.spacing(2)}
         color={theme.palette.primary.main}
         testID="back-arrow-icon"
       />

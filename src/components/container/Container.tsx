@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 import { View, ViewProps } from "react-native";
+import { ITheme } from "src/assets/themes";
+import { Theme } from "src/hooks";
 
 /**
  * Container component with the ability to restrict the width of content.
@@ -23,21 +25,26 @@ export interface ContainerProps extends ViewProps {
   paddingHorizontal?: number;
 }
 
+export const useStyles = Theme.makeStyles((theme: ITheme) => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.palette.background.main,
+  },
+}));
+
 const Container = ({
   children,
   paddingHorizontal = 0,
   ...rest
 }: PropsWithChildren<ContainerProps>) => {
-  /**
-   * The styles for the Container component.
-   */
-  const containerStyles = {
-    flex: 1,
-    paddingHorizontal,
-  };
+  const styles = useStyles();
 
   return (
-    <View {...rest} style={containerStyles} testID="container">
+    <View
+      style={[styles.container, { paddingHorizontal }]}
+      {...rest}
+      testID="container"
+    >
       {children}
     </View>
   );

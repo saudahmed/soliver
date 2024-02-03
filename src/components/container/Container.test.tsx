@@ -10,12 +10,12 @@ describe("Container", () => {
 
     const container = getByTestId("container");
 
-    expect(container).toBeOnTheScreen();
+    expect(container).toBeTruthy();
   });
 
-  test("renders children and applies paddingHorizontal style", () => {
+  test("renders children", () => {
     const { getByTestId } = render(
-      <Container paddingHorizontal={16}>
+      <Container>
         <Text>Test</Text>
       </Container>
     );
@@ -24,24 +24,21 @@ describe("Container", () => {
 
     // Check if the children are rendered
     expect(container.props.children).toEqual(<Text>Test</Text>);
-
-    // Check if the paddingHorizontal style is applied
-    expect(container.props.style.paddingHorizontal).toEqual(16);
   });
 
   test("applies default styles", () => {
     const { getByTestId } = render(<Container />);
-    expect(getByTestId("container").props.style).toEqual({
-      flex: 1,
-      paddingHorizontal: 0,
-    });
+    expect(getByTestId("container").props.style).toEqual([
+      { backgroundColor: "#ffffff", flex: 1 },
+      { paddingHorizontal: 0 },
+    ]);
   });
 
-  test("applies custom styles", () => {
+  test("applies custom padding", () => {
     const { getByTestId } = render(<Container paddingHorizontal={16} />);
-    expect(getByTestId("container").props.style).toEqual({
-      flex: 1,
-      paddingHorizontal: 16,
-    });
+    expect(getByTestId("container").props.style).toEqual([
+      { backgroundColor: "#ffffff", flex: 1 },
+      { paddingHorizontal: 16 },
+    ]);
   });
 });

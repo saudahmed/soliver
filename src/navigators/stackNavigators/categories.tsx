@@ -5,6 +5,8 @@ import Categories from "src/pages/categories/Categories";
 
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
+import Header from "src/components/header/Header";
+import ButtonBack from "src/components/button/back/back";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -13,7 +15,7 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     backgroundColor: theme.palette.background.main,
   },
   headerTitleStyle: {
-    ...theme.typography.headlineM,
+    ...theme.typography.headlineS,
     color: theme.palette.primary.main,
     textAlign: "center",
   },
@@ -38,8 +40,10 @@ const StackNavigator = () => {
           name="CategoriesScreen"
           component={Categories}
           options={() => ({
-            title: "New",
-            headerShown: true,
+            headerTitle: () => (
+              <Header headingText="New" subheadingText="205 Atikel" />
+            ),
+            headerLeft: () => <ButtonBack onButtonPress={() => {}} />,
           })}
         />
       </Stack.Group>

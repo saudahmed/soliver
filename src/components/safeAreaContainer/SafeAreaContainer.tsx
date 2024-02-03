@@ -12,8 +12,6 @@ import { Theme } from "src/hooks";
  * SafeAreaContainer is a custom container that provides top and bottom safe insets.
  * It also adopts background and status bar color according to the light and dark theme.
  *
- * @component
- *
  * @param {PropsWithChildren<ISafeAreaContainer>} props - The properties of the SafeAreaContainer component.
  * @param {React.ReactNode} props.children - The content to be wrapped by the SafeAreaContainer.
  * @param {Array<Edge>} [props.edges] - An array of edges for which to apply safe area insets.

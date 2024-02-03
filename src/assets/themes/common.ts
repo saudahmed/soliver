@@ -36,68 +36,40 @@ const common = {
     fontWeightBold: "700",
     headlineXL: {
       fontFamily: "Lato-Bold",
-      fontSize: getResponsiveFontSize(22),
-      lineHeight: getResponsiveFontSize(24),
+      fontSize: getResponsiveFontSize(15),
     },
     headlineL: {
       fontFamily: "Lato-Bold",
-      fontSize: getResponsiveFontSize(20),
-      lineHeight: getResponsiveFontSize(22),
+      fontSize: getResponsiveFontSize(13),
     },
     headlineM: {
       fontFamily: "Lato-Bold",
-      fontSize: getResponsiveFontSize(18),
-      lineHeight: getResponsiveFontSize(20),
+      fontSize: getResponsiveFontSize(11),
+      lineHeight: getResponsiveFontSize(16),
     },
     headlineS: {
       fontFamily: "Lato-Bold",
-      fontSize: getResponsiveFontSize(14),
-      lineHeight: getResponsiveFontSize(16),
+      fontSize: getResponsiveFontSize(10),
     },
     headlineXS: {
       fontFamily: "Lato-Bold",
-      fontSize: getResponsiveFontSize(12),
-      lineHeight: getResponsiveFontSize(14),
+      fontSize: getResponsiveFontSize(7),
     },
     body1: {
       fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(16),
-      lineHeight: getResponsiveFontSize(20),
+      fontSize: getResponsiveFontSize(10),
     },
     body2: {
       fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(14),
-      lineHeight: getResponsiveFontSize(16),
-    },
-    subtitle: {
-      fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(12),
-      lineHeight: getResponsiveFontSize(15),
-    },
-    button: {
-      fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(18),
-      lineHeight: getResponsiveFontSize(18),
-    },
-    caption: {
-      fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(10),
-      lineHeight: getResponsiveFontSize(12),
-    },
-    captionItalic: {
-      fontFamily: "Lato-Italic",
-      fontSize: getResponsiveFontSize(12),
-      lineHeight: getResponsiveFontSize(16),
+      fontSize: getResponsiveFontSize(8),
     },
     caption1Italic: {
       fontFamily: "Lato-Italic",
-      fontSize: getResponsiveFontSize(14),
-      lineHeight: getResponsiveFontSize(16),
+      fontSize: getResponsiveFontSize(11),
     },
     caption2Italic: {
       fontFamily: "Lato-Italic",
-      fontSize: getResponsiveFontSize(18),
-      lineHeight: getResponsiveFontSize(21),
+      fontSize: getResponsiveFontSize(8),
     },
   },
 };
