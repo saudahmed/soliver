@@ -9,6 +9,7 @@
     "axios": "^1.6.7",
     "expo": "^50.0.5",
     "expo-font": "~11.10.2",
+    "expo-image": "~1.10.5",
     "expo-splash-screen": "~0.26.4",
     "jest": "^29.3.1",
     "jest-expo": "~50.0.1",

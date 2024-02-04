@@ -25,13 +25,14 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 12,
+    padding: 10,
     flexDirection: "row",
   },
   buttonWithBorder: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 12,
     flexDirection: "row",
     borderWidth: 1,
     borderColor: theme.palette.primary.main,
@@ -41,8 +42,11 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     color: theme.palette.primary.main,
     ...theme.typography.body1,
   },
-  iconContainer: {
-    paddingHorizontal: 4,
+  iconRightContainer: {
+    paddingLeft: 4,
+  },
+  iconLeftContainer: {
+    paddingRight: 4,
   },
 }));
 
@@ -64,7 +68,7 @@ const ButtonIcon = ({
       testID="button"
     >
       {iconPosition === "left" && (
-        <View style={styles.iconContainer} testID="icon-left">
+        <View style={styles.iconLeftContainer} testID="icon-left">
           <MaterialCommunityIcons
             name={iconName}
             size={20}
@@ -74,7 +78,7 @@ const ButtonIcon = ({
       )}
       <Text style={styles.buttonText}>{text}</Text>
       {iconPosition === "right" && (
-        <View style={styles.iconContainer} testID="icon-right">
+        <View style={styles.iconRightContainer} testID="icon-right">
           <MaterialCommunityIcons
             name={iconName}
             size={20}

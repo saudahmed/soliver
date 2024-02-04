@@ -61,7 +61,7 @@ const common = {
     },
     body2: {
       fontFamily: "Lato-Regular",
-      fontSize: getResponsiveFontSize(8),
+      fontSize: getResponsiveFontSize(7.5),
     },
     caption1Italic: {
       fontFamily: "Lato-Italic",

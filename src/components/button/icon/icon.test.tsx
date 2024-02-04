@@ -81,7 +81,8 @@ describe("ButtonIcon", () => {
     expect(getByTestId("button").props.style).toEqual({
       alignItems: "center",
       justifyContent: "center",
-      padding: 10,
+      paddingHorizontal: 10,
+      paddingVertical: 12,
       flexDirection: "row",
       borderWidth: 1,
       borderColor: "#000000",
@@ -102,7 +103,7 @@ describe("ButtonIcon", () => {
     expect(getByTestId("button").props.style).toEqual({
       alignItems: "center",
       justifyContent: "center",
-      padding: 12,
+      padding: 10,
       flexDirection: "row",
     });
   });

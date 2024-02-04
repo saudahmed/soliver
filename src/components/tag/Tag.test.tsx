@@ -24,7 +24,7 @@ describe("Tag", () => {
       { backgroundColor: "red" },
     ]);
     expect(getByTestId("tag-text").props.style).toEqual([
-      { fontFamily: "Lato-Regular", fontSize: 19, textTransform: "uppercase" },
+      { fontFamily: "Lato-Regular", fontSize: 18, textTransform: "uppercase" },
       { color: "white" },
     ]);
   });

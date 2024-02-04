@@ -45,9 +45,9 @@ export interface ITag {
 }
 
 export interface IArticleTags {
-  new: "true" | "false";
-  sustainable: "true" | "false";
-  premium: "true" | "false";
+  new: boolean;
+  sustainable: boolean;
+  premium: boolean;
 }
 
 export interface IArticleColorInfo {
@@ -64,6 +64,8 @@ export interface IArticlePicturesInfo {
 }
 
 export interface IArticleColorVariant {
+  wishList: boolean;
+  shoppingCart: boolean;
   color: IArticleColorInfo;
   pictures: IArticlePicturesInfo;
 }
@@ -76,7 +78,19 @@ export interface IArticle {
   brand: string;
   price: number;
   tags: IArticleTags;
-  wishList: boolean;
-  shoppingCart: boolean;
   colorVariants: Array<IArticleColorVariant>;
+}
+
+export interface IGridListProps<T> {
+  data: Array<T>;
+  paddingHorizontal: number;
+  gap: number;
+  numColumns: number;
+}
+
+export interface ICategoryCardProps extends ViewProps {
+  data: IArticle;
+  cardSize: number;
+  onLikeButtonPress: (id: number) => void;
+  onOrderButtonPress: (id: number) => void;
 }

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IArticle } from "src/types";
 import {
   fetchAllArticles,
@@ -14,11 +14,8 @@ interface IArticlesState {
 
   articlesError: any;
   subArticlesError: any;
-  // likedArticles: Array<IArticle>;
-  // isLikedArticlesLoading: boolean;
 
-  // shoppingCartArticles: Array<IArticle>;
-  // isLikedShoppingCartArticlesLoading: boolean;
+  articleCategories: Array<string>;
 }
 
 export const initialState: IArticlesState = {
@@ -30,6 +27,8 @@ export const initialState: IArticlesState = {
 
   articlesError: null,
   subArticlesError: null,
+
+  articleCategories: [],
 };
 
 const categoriesSlice = createSlice({
@@ -40,10 +39,21 @@ const categoriesSlice = createSlice({
     builder.addCase(fetchAllArticles.pending, (state, action) => {
       state.isArticlesLoading = true;
     });
-    builder.addCase(fetchAllArticles.fulfilled, (state, action) => {
-      state.isArticlesLoading = false;
-      state.articles = action.payload;
-    });
+    builder.addCase(
+      fetchAllArticles.fulfilled,
+      (state, action: PayloadAction<Array<IArticle>>) => {
+        state.isArticlesLoading = false;
+
+        const articles = action.payload;
+
+        //Also Update article Categories
+        state.articleCategories = Array.from(
+          new Set(articles.map((article: IArticle) => article.category))
+        );
+
+        state.articles = action.payload;
+      }
+    );
     builder.addCase(fetchAllArticles.rejected, (state, action) => {
       state.isArticlesLoading = false;
       state.articlesError = action.error;

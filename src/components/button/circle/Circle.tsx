@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 import { IButtonCircle } from "src/types";
@@ -24,8 +24,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   button: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    width: theme.spacing(2.6),
+    height: theme.spacing(2.6),
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
@@ -46,7 +46,7 @@ const ButtonCircle = ({
   const styles = useStyles();
 
   return (
-    <TouchableOpacity
+    <Pressable
       {...rest}
       style={styles.button}
       onPress={onButtonPress}
@@ -54,11 +54,11 @@ const ButtonCircle = ({
     >
       <MaterialCommunityIcons
         name={selected ? iconNamePressed : iconNameNormal}
-        size={18}
+        size={16}
         color={iconColor}
         testID="icon-circle"
       />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
