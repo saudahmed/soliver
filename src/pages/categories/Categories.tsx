@@ -11,6 +11,7 @@ import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 import ButtonCircle from "src/components/button/circle/Circle";
 import ButtonColor from "src/components/button/color/Color";
+import Tag from "src/components/tag/Tag";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -83,6 +84,8 @@ const Categories = ({
         <ButtonColor color="teal" selected onButtonPress={() => {}} />
         <ButtonColor color="teal" selected={false} onButtonPress={() => {}} />
       </View>
+      <Tag backgroundColor="green" textColor="white" text="nachhaltig" />
+      <Tag backgroundColor="white" textColor="black" text="New" />
     </Container>
   );
 };
