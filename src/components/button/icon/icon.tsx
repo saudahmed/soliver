@@ -2,7 +2,7 @@ import * as React from "react";
 import { Pressable, Text, View } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-import { IButtonIcon } from "src/types/button";
+import { IButtonIcon } from "src/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 /**

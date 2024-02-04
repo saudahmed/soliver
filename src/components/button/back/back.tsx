@@ -2,7 +2,7 @@ import * as React from "react";
 import { TouchableOpacity } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-import { IButton } from "src/types/button";
+import { IButton } from "src/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 /**

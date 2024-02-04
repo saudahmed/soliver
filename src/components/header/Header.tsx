@@ -1,16 +1,11 @@
 import { View, Text } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-
-interface IHeaderTitle {
-  headingText: string;
-  subheadingText: string;
-}
+import { IHeaderTitleProps } from "src/types";
 
 /**
  * Header is a component with HeadingText and SubheadingText.
  *
- * @param {IHeaderTitle} props - The properties of the Header component.
  * @param {string} [props.headingText] - The text passed as the heading text.
  * @param {string} [props.subheadingText] - The text passed as the subheading text.
  * @param {object} props.rest - Additional View props to be applied.
@@ -40,7 +35,11 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   },
 }));
 
-const Header = ({ headingText, subheadingText, ...rest }: IHeaderTitle) => {
+const Header = ({
+  headingText,
+  subheadingText,
+  ...rest
+}: IHeaderTitleProps) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
 

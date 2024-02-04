@@ -2,7 +2,7 @@ import * as React from "react";
 import { Pressable, View } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
-import { IButtonColor } from "src/types/button";
+import { IButtonColor } from "src/types";
 
 /**
  * ButtonColor is a custom button component with a close icon.

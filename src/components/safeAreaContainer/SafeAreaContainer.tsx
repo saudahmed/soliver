@@ -7,6 +7,7 @@ import {
 } from "react-native-safe-area-context";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
+import { ISafeAreaContainer } from "src/types";
 
 /**
  * SafeAreaContainer is a custom container that provides top and bottom safe insets.
@@ -24,10 +25,6 @@ import { Theme } from "src/hooks";
  * // Usage with custom edges and additional props
  * return <SafeAreaContainer edges={['top', 'bottom']} style={{ flex: 1, backgroundColor: 'blue' }}><MyAwesomeComponent /></SafeAreaContainer>
  */
-
-export interface ISafeAreaContainer extends SafeAreaViewProps {
-  edges?: Array<Edge>;
-}
 
 // Define styles using the Theme provider
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({

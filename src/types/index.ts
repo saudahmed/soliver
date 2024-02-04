@@ -1,5 +1,19 @@
-import { TouchableOpacityProps } from "react-native";
+import { TouchableOpacityProps, ViewProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
+
+export interface IHeaderTitleProps {
+  headingText: string;
+  subheadingText: string;
+}
+
+export interface IContainerProps extends ViewProps {
+  paddingHorizontal?: number;
+}
+
+export interface ISafeAreaContainer extends SafeAreaViewProps {
+  edges?: Array<Edge>;
+}
 
 export interface IButton extends TouchableOpacityProps {
   onButtonPress: () => void;
@@ -22,4 +36,10 @@ export interface IButtonCircle extends IButton {
 export interface IButtonColor extends IButton {
   color: string;
   selected: boolean;
+}
+
+export interface ITag {
+  backgroundColor: string;
+  textColor: string;
+  text: string;
 }
