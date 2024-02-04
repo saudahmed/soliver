@@ -5,6 +5,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Container from "src/components/container/Container";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { store, persistor } from "src/store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,12 +29,16 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <Container onLayout={onLayoutRootView}>
-        <NavigationContainer>
-          <BottomTabNavigator />
-        </NavigationContainer>
-      </Container>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <Container onLayout={onLayoutRootView}>
+            <NavigationContainer>
+              <BottomTabNavigator />
+            </NavigationContainer>
+          </Container>
+        </SafeAreaProvider>
+      </PersistGate>
+    </Provider>
   );
 }

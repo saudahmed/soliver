@@ -43,3 +43,40 @@ export interface ITag {
   textColor: string;
   text: string;
 }
+
+export interface IArticleTags {
+  new: "true" | "false";
+  sustainable: "true" | "false";
+  premium: "true" | "false";
+}
+
+export interface IArticleColorInfo {
+  variant: string;
+  group: string;
+  value: string;
+}
+
+export interface IArticlePicturesInfo {
+  front: string;
+  flat: string;
+  back: string;
+  outfit: string;
+}
+
+export interface IArticleColorVariant {
+  color: IArticleColorInfo;
+  pictures: IArticlePicturesInfo;
+}
+
+export interface IArticle {
+  id: number;
+  name: string;
+  detail: string;
+  category: string;
+  brand: string;
+  price: number;
+  tags: IArticleTags;
+  wishList: boolean;
+  shoppingCart: boolean;
+  colorVariants: Array<IArticleColorVariant>;
+}
