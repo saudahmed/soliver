@@ -16,6 +16,9 @@ interface IArticlesState {
   subArticlesError: any;
 
   articleCategories: Array<string>;
+
+  categoriesTotal: string;
+  subCategoriesTotal: string;
 }
 
 export const initialState: IArticlesState = {
@@ -29,6 +32,9 @@ export const initialState: IArticlesState = {
   subArticlesError: null,
 
   articleCategories: [],
+
+  categoriesTotal: "",
+  subCategoriesTotal: "",
 };
 
 const categoriesSlice = createSlice({
@@ -51,7 +57,8 @@ const categoriesSlice = createSlice({
           new Set(articles.map((article: IArticle) => article.category))
         );
 
-        state.articles = action.payload;
+        state.articles = articles;
+        state.categoriesTotal = articles.length.toString();
       }
     );
     builder.addCase(fetchAllArticles.rejected, (state, action) => {
@@ -64,7 +71,11 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(fetchSubArticles.fulfilled, (state, action) => {
       state.isSubArticlesLoading = false;
-      state.subArticles = action.payload;
+
+      const subArticles = action.payload;
+
+      state.subArticles = subArticles;
+      state.subCategoriesTotal = subArticles.length.toString();
     });
     builder.addCase(fetchSubArticles.rejected, (state, action) => {
       state.isSubArticlesLoading = false;

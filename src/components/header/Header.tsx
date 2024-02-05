@@ -37,7 +37,7 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
 
 const Header = ({
   headingText,
-  subheadingText,
+  subHeadingText,
   ...rest
 }: IHeaderTitleProps) => {
   // Get styles and theme using the Theme provider
@@ -46,7 +46,7 @@ const Header = ({
   return (
     <View {...rest} style={styles.header} testID="header">
       <Text style={styles.headingText}>{headingText}</Text>
-      <Text style={styles.subheadingText}>{subheadingText}</Text>
+      <Text style={styles.subheadingText}>{subHeadingText}</Text>
     </View>
   );
 };

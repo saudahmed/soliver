@@ -54,7 +54,7 @@ export const getArticlesByBrand = async (brand: string) => {
 export const getArticlesByCategory = async (category: string) => {
   try {
     const response = await apiService.get(
-      encodeURIComponent(`/articles?category=${category}`)
+      `/articles?category=${encodeURIComponent(category)}`
     );
 
     return response.data;

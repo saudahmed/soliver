@@ -4,7 +4,7 @@ import { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
 
 export interface IHeaderTitleProps {
   headingText: string;
-  subheadingText: string;
+  subHeadingText: string;
 }
 
 export interface IContainerProps extends ViewProps {
