@@ -2,6 +2,7 @@ import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "src/types/rootStackParams";
 import Categories from "src/pages/categories/Categories";
+import SubCategories from "src/pages/subCategories/SubCategories";
 
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
@@ -44,6 +45,22 @@ const StackNavigator = () => {
               <Header headingText="New" subheadingText="205 Atikel" />
             ),
             headerLeft: () => <ButtonBack onButtonPress={() => {}} />,
+          })}
+        />
+        <Stack.Screen
+          name="SubCategoriesScreen"
+          component={SubCategories}
+          options={({ navigation }) => ({
+            headerTitle: () => (
+              <Header headingText="New" subheadingText="205 Atikel" />
+            ),
+            headerLeft: () => (
+              <ButtonBack
+                onButtonPress={() => {
+                  navigation.goBack();
+                }}
+              />
+            ),
           })}
         />
       </Stack.Group>

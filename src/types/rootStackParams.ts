@@ -1,6 +1,9 @@
 export type RootStackParamList = {
   HomeScreen: undefined;
+
   CategoriesScreen: undefined;
+  SubCategoriesScreen: { category: string };
+
   WishListScreen: undefined;
   ShoppingCartScreen: undefined;
   ProfileScreen: undefined;

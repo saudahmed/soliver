@@ -1,11 +1,5 @@
 import { useEffect, useCallback, useState, useMemo } from "react";
-import {
-  View,
-  ScrollView,
-  Dimensions,
-  FlatList,
-  RefreshControl,
-} from "react-native";
+import { View, Dimensions, FlatList, RefreshControl } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 
@@ -17,7 +11,7 @@ import CategoryCard from "src/components/categoryCard/CategoryCard";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 
-import { fetchAllArticles, useDispatch, RootState } from "src/store";
+import { fetchSubArticles, useDispatch, RootState } from "src/store";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -34,11 +28,13 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   },
 }));
 
-const Categories = ({
+const SubCategories = ({
+  route,
   navigation,
-}: NativeStackScreenProps<RootStackParamList, "CategoriesScreen">) => {
+}: NativeStackScreenProps<RootStackParamList, "SubCategoriesScreen">) => {
   const styles = useStyles();
-  const { articles, isArticlesLoading, articleCategories } = useSelector(
+  const { category } = route.params;
+  const { subArticles, isSubArticlesLoading } = useSelector(
     (state: RootState) => {
       return state.categories;
     }
@@ -49,12 +45,12 @@ const Categories = ({
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchAllArticles());
+    dispatch(fetchSubArticles(category));
   }, []);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    dispatch(fetchAllArticles()).then(() => {
+    dispatch(fetchSubArticles(category)).then(() => {
       setRefreshing(false);
     });
   }, []);
@@ -103,37 +99,9 @@ const Categories = ({
           />
         </View>
       </View>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        style={{ marginVertical: 12 }}
-      >
-        <View style={{ flexDirection: "row" }}>
-          {articleCategories.map((category, index) => (
-            <View
-              style={styles.categoriesButtonContainer}
-              key={`category_button_${index}`}
-            >
-              <ButtonIcon
-                key={index}
-                iconPosition="right"
-                text={category}
-                border
-                iconName="chevron-right"
-                onButtonPress={() => {
-                  //Navigate to the SubCategories route with params */
-                  navigation.navigate("SubCategoriesScreen", {
-                    category,
-                  });
-                }}
-              />
-            </View>
-          ))}
-        </View>
-      </ScrollView>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={articles}
+        data={subArticles}
         renderItem={renderItem}
         numColumns={numColumns}
         contentContainerStyle={{ gap }}
@@ -147,4 +115,4 @@ const Categories = ({
   );
 };
 
-export default Categories;
+export default SubCategories;
