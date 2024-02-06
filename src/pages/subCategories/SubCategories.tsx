@@ -8,6 +8,7 @@ import Container from "src/components/container/Container";
 import { RootStackParamList } from "src/types/rootStackParams";
 import ButtonIcon from "src/components/button/icon/icon";
 import CategoryCard from "src/components/categoryCard/CategoryCard";
+import HorizontalDivider from "src/components/divider/Horizontal";
 
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
@@ -19,6 +20,9 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     paddingVertical: 0,
     flexDirection: "row",
     marginVertical: 12,
+  },
+  dividerContainer: {
+    marginBottom: 12,
   },
   buttonContainer: {
     flex: 1,
@@ -110,6 +114,10 @@ const SubCategories = ({
           />
         </View>
       </View>
+      <View style={styles.dividerContainer}>
+        <HorizontalDivider fullWidth />
+      </View>
+
       <FlatList
         showsVerticalScrollIndicator={false}
         data={filteredArticles}

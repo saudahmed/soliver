@@ -105,3 +105,8 @@ export interface IFilterArticlesState {
   minimumPrice: number;
   maximumPrice: number;
 }
+
+export interface IDividerProps extends ViewProps {
+  fullWidth?: boolean;
+  style?: any;
+}

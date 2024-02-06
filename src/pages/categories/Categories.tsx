@@ -20,6 +20,7 @@ import { Theme } from "src/hooks";
 
 import { fetchAllArticles, useDispatch, RootState } from "src/store";
 import SafeAreaContainer from "src/components/safeAreaContainer/SafeAreaContainer";
+import HorizontalDivider from "src/components/divider/Horizontal";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -113,6 +114,7 @@ const Categories = ({
             />
           </View>
         </View>
+        <HorizontalDivider fullWidth />
         <View>
           <ScrollView
             showsHorizontalScrollIndicator={false}
