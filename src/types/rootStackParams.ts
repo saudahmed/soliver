@@ -2,7 +2,7 @@ import { IArticle } from ".";
 
 export type RootStackParamList = {
   BottomTabScreen: undefined;
-  FilterScreen: { articles: IArticle[] };
+  FilterScreen: { articles: IArticle[]; reducer: string };
 
   HomeScreen: undefined;
 

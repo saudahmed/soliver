@@ -3,6 +3,7 @@ import { View, Dimensions, FlatList, RefreshControl } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 
+import { useFilterArticles } from "src/hooks/filter";
 import Container from "src/components/container/Container";
 import { RootStackParamList } from "src/types/rootStackParams";
 import ButtonIcon from "src/components/button/icon/icon";
@@ -38,6 +39,11 @@ const SubCategories = ({
     (state: RootState) => {
       return state.categories;
     }
+  );
+
+  const { filteredArticles } = useFilterArticles(
+    subArticles,
+    "filterSubArticles"
   );
 
   const dispatch = useDispatch();
@@ -95,13 +101,18 @@ const SubCategories = ({
             border={false}
             iconPosition="left"
             iconName="filter-variant"
-            onButtonPress={() => {}}
+            onButtonPress={() => {
+              navigation.navigate("FilterScreen", {
+                articles: subArticles,
+                reducer: "filterSubArticles",
+              });
+            }}
           />
         </View>
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={subArticles}
+        data={filteredArticles}
         renderItem={renderItem}
         numColumns={numColumns}
         contentContainerStyle={{ gap }}

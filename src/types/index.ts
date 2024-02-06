@@ -92,16 +92,16 @@ export interface IArticle {
   colorVariants: Array<IArticleColorVariant>;
 }
 
-export interface IGridListProps<T> {
-  data: Array<T>;
-  paddingHorizontal: number;
-  gap: number;
-  numColumns: number;
-}
-
 export interface ICategoryCardProps extends ViewProps {
   data: IArticle;
   cardSize: number;
   onLikeButtonPress: (id: number) => void;
   onOrderButtonPress: (id: number) => void;
+}
+
+export interface IFilterArticlesState {
+  selectedColors: Array<boolean>;
+  selectedBrands: Array<boolean>;
+  minimumPrice: number;
+  maximumPrice: number;
 }

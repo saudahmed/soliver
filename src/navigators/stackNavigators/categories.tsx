@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "src/types/rootStackParams";
 import Categories from "src/pages/categories/Categories";
 import SubCategories from "src/pages/subCategories/SubCategories";
-import { RootState } from "src/store";
+import { RootState, resetSubArticles, useDispatch } from "src/store";
 import { useSelector } from "react-redux";
 import { useFilterArticles } from "src/hooks/filter";
 
@@ -13,13 +13,21 @@ import ButtonBack from "src/components/button/back/back";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
-  const { articles, categoriesTotal, subCategoriesTotal } = useSelector(
-    (state: RootState) => {
-      return state.categories;
-    }
+  const { articles, subArticles } = useSelector((state: RootState) => {
+    return state.categories;
+  });
+
+  const dispatch = useDispatch();
+
+  const transformedFilterArticles = useFilterArticles(
+    articles,
+    "filterArticles"
   );
 
-  const { filteredArticles } = useFilterArticles(articles);
+  const transformedFilterSubArticles = useFilterArticles(
+    subArticles,
+    "filterSubArticles"
+  );
 
   return (
     <Stack.Navigator
@@ -36,7 +44,7 @@ const StackNavigator = () => {
             headerTitle: () => (
               <Header
                 headingText="New"
-                subHeadingText={`${filteredArticles.length}  Artikel`}
+                subHeadingText={`${transformedFilterArticles.filteredArticles.length}  Artikel`}
               />
             ),
             // headerLeft: () => <ButtonBack onButtonPress={() => {}} />,
@@ -51,12 +59,13 @@ const StackNavigator = () => {
               headerTitle: () => (
                 <Header
                   headingText={category}
-                  subHeadingText={`${subCategoriesTotal}  Artikel`}
+                  subHeadingText={`${transformedFilterSubArticles.filteredArticles.length}  Artikel`}
                 />
               ),
               headerLeft: () => (
                 <ButtonBack
                   onButtonPress={() => {
+                    dispatch(resetSubArticles());
                     navigation.goBack();
                   }}
                 />

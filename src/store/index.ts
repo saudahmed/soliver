@@ -59,4 +59,15 @@ export {
   setSelectedBrands,
   setMinPrice,
   setMaxPrice,
+  reset,
 } from "./slices/filterArticlesSlice";
+
+export {
+  initializeSelectedColorsSubArticles,
+  setSelectedColorsSubArticles,
+  initializeSelectedBrandsSubArticles,
+  setSelectedBrandsSubArticles,
+  setMinPriceSubArticles,
+  setMaxPriceSubArticles,
+  resetSubArticles,
+} from "./slices/filterSubArticlesSlice";

@@ -46,7 +46,7 @@ const Categories = ({
     }
   );
 
-  const { filteredArticles } = useFilterArticles(articles);
+  const { filteredArticles } = useFilterArticles(articles, "filterArticles");
 
   const dispatch = useDispatch();
 
@@ -107,6 +107,7 @@ const Categories = ({
               onButtonPress={() => {
                 navigation.navigate("FilterScreen", {
                   articles: articles,
+                  reducer: "filterArticles",
                 });
               }}
             />

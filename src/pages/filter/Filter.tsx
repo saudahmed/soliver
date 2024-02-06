@@ -20,6 +20,12 @@ import {
   setSelectedBrands,
   setMinPrice,
   setMaxPrice,
+  initializeSelectedColorsSubArticles,
+  setSelectedColorsSubArticles,
+  initializeSelectedBrandsSubArticles,
+  setSelectedBrandsSubArticles,
+  setMinPriceSubArticles,
+  setMaxPriceSubArticles,
   useDispatch,
   RootState,
 } from "src/store";
@@ -85,14 +91,14 @@ const Filter = ({
   // Get styles and theme using the Theme provider
   const styles = useStyles();
   const theme = Theme.useTheme();
-  const { articles } = route.params;
+  const { articles, reducer } = route.params;
   const { selectedColors, selectedBrands, minimumPrice, maximumPrice } =
     useSelector((state: RootState) => {
-      return state.filterArticles;
+      return state[reducer];
     });
   const dispatch = useDispatch();
   const { filteredArticles, uniqueColorGroups, uniqueBrandGroups } =
-    useFilterArticles(articles);
+    useFilterArticles(articles, reducer);
 
   const prices = articles.map((item) => item.price);
 
@@ -101,28 +107,51 @@ const Filter = ({
 
   useEffect(() => {
     if (minimumPrice === 0.0 && maximumPrice === 0.0) {
-      dispatch(setMinPrice({ value: initialMinPrice }));
-      dispatch(setMaxPrice({ value: initialMaxPrice }));
+      if (reducer === "filterArticles") {
+        dispatch(setMinPrice({ value: initialMinPrice }));
+        dispatch(setMaxPrice({ value: initialMaxPrice }));
+      } else {
+        dispatch(setMinPriceSubArticles({ value: initialMinPrice }));
+        dispatch(setMaxPriceSubArticles({ value: initialMaxPrice }));
+      }
     }
   }, []);
 
   useEffect(() => {
     if (selectedColors.length === 0) {
-      dispatch(
-        initializeSelectedColors({
-          value: false,
-          numberOfColors: uniqueColorGroups.length,
-        })
-      );
+      if (reducer === "filterArticles") {
+        dispatch(
+          initializeSelectedColors({
+            value: false,
+            numberOfColors: uniqueColorGroups.length,
+          })
+        );
+      } else {
+        dispatch(
+          initializeSelectedColorsSubArticles({
+            value: false,
+            numberOfColors: uniqueColorGroups.length,
+          })
+        );
+      }
     }
 
     if (selectedBrands.length === 0) {
-      dispatch(
-        initializeSelectedBrands({
-          value: false,
-          numberOfBrands: uniqueBrandGroups.length,
-        })
-      );
+      if (reducer === "filterArticles") {
+        dispatch(
+          initializeSelectedBrands({
+            value: false,
+            numberOfBrands: uniqueBrandGroups.length,
+          })
+        );
+      } else {
+        dispatch(
+          initializeSelectedBrandsSubArticles({
+            value: false,
+            numberOfBrands: uniqueBrandGroups.length,
+          })
+        );
+      }
     }
   }, [
     selectedColors.length,
@@ -134,12 +163,21 @@ const Filter = ({
   const handleColorButtonPress = useCallback(
     (index: number) => {
       // Update the selected state of the button at the given index
-      dispatch(
-        setSelectedColors({
-          index: index,
-          value: !selectedColors[index],
-        })
-      );
+      if (reducer === "filterArticles") {
+        dispatch(
+          setSelectedColors({
+            index: index,
+            value: !selectedColors[index],
+          })
+        );
+      } else {
+        dispatch(
+          setSelectedColorsSubArticles({
+            index: index,
+            value: !selectedColors[index],
+          })
+        );
+      }
     },
     [selectedColors]
   );
@@ -147,12 +185,21 @@ const Filter = ({
   const handleBrandButtonPress = useCallback(
     (index: number) => {
       // Update the selected state of the button at the given index
-      dispatch(
-        setSelectedBrands({
-          index: index,
-          value: !selectedBrands[index],
-        })
-      );
+      if (reducer === "filterArticles") {
+        dispatch(
+          setSelectedBrands({
+            index: index,
+            value: !selectedBrands[index],
+          })
+        );
+      } else {
+        dispatch(
+          setSelectedBrandsSubArticles({
+            index: index,
+            value: !selectedBrands[index],
+          })
+        );
+      }
     },
     [selectedBrands]
   );
@@ -160,8 +207,13 @@ const Filter = ({
   const paddingHorizontal = 16;
 
   const handleValueChange = useCallback((lowValue, highValue) => {
-    dispatch(setMinPrice({ value: lowValue.toFixed(2) }));
-    dispatch(setMaxPrice({ value: highValue.toFixed(2) }));
+    if (reducer === "filterArticles") {
+      dispatch(setMinPrice({ value: lowValue.toFixed(2) }));
+      dispatch(setMaxPrice({ value: highValue.toFixed(2) }));
+    } else {
+      dispatch(setMinPriceSubArticles({ value: lowValue.toFixed(2) }));
+      dispatch(setMaxPriceSubArticles({ value: highValue.toFixed(2) }));
+    }
   }, []);
 
   return (

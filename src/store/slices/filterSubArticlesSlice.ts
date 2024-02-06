@@ -8,53 +8,49 @@ export const initialState: IFilterArticlesState = {
   maximumPrice: 0,
 };
 
-const filterArticlesSlice = createSlice({
-  name: "filterArticles",
+const filterSubArticlesSlice = createSlice({
+  name: "filterSubArticles",
   initialState,
   reducers: {
-    initializeSelectedColors: (state, action) => {
+    initializeSelectedColorsSubArticles: (state, action) => {
       const { value, numberOfColors } = action.payload;
       for (let i = 0; i < numberOfColors; i++) {
         state.selectedColors.push(value);
       }
     },
-    setSelectedColors(state, action) {
+    setSelectedColorsSubArticles(state, action) {
       const { index, value } = action.payload;
       state.selectedColors[index] = value;
     },
-    initializeSelectedBrands: (state, action) => {
+    initializeSelectedBrandsSubArticles: (state, action) => {
       const { value, numberOfBrands } = action.payload;
       for (let i = 0; i < numberOfBrands; i++) {
         state.selectedBrands.push(value);
       }
     },
-    setSelectedBrands(state, action) {
+    setSelectedBrandsSubArticles(state, action) {
       const { index, value } = action.payload;
       state.selectedBrands[index] = value;
     },
-    setMinPrice(state, action) {
+    setMinPriceSubArticles(state, action) {
       const { value } = action.payload;
       state.minimumPrice = value;
     },
-    setMaxPrice(state, action) {
+    setMaxPriceSubArticles(state, action) {
       const { value } = action.payload;
       state.maximumPrice = value;
     },
-    reset(state, _) {
-      state = {
-        ...initialState,
-      };
-    },
+    resetSubArticles: (state) => initialState,
   },
 });
 
 export const {
-  initializeSelectedColors,
-  setSelectedColors,
-  initializeSelectedBrands,
-  setSelectedBrands,
-  setMinPrice,
-  setMaxPrice,
-  reset,
-} = filterArticlesSlice.actions;
-export const filterArticlesReducer = filterArticlesSlice.reducer;
+  initializeSelectedColorsSubArticles,
+  setSelectedColorsSubArticles,
+  initializeSelectedBrandsSubArticles,
+  setSelectedBrandsSubArticles,
+  setMinPriceSubArticles,
+  setMaxPriceSubArticles,
+  resetSubArticles,
+} = filterSubArticlesSlice.actions;
+export const filterSubArticlesReducer = filterSubArticlesSlice.reducer;

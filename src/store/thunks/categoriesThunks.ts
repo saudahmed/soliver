@@ -6,7 +6,6 @@ const fetchAllArticles = createAsyncThunk(
   async () => {
     try {
       const response = getArticles();
-      console.log(response);
 
       return response;
     } catch (ex) {
@@ -20,7 +19,6 @@ const fetchSubArticles = createAsyncThunk(
   async (category: string) => {
     try {
       const response = getArticlesByCategory(category);
-      console.log(response);
 
       return response;
     } catch (ex) {

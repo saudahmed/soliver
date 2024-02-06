@@ -17,7 +17,6 @@ interface IArticlesState {
 
   articleCategories: Array<string>;
 
-  categoriesTotal: string;
   subCategoriesTotal: string;
 }
 
@@ -33,7 +32,6 @@ export const initialState: IArticlesState = {
 
   articleCategories: [],
 
-  categoriesTotal: "",
   subCategoriesTotal: "",
 };
 
@@ -58,7 +56,6 @@ const categoriesSlice = createSlice({
         );
 
         state.articles = articles;
-        state.categoriesTotal = articles.length.toString();
       }
     );
     builder.addCase(fetchAllArticles.rejected, (state, action) => {
