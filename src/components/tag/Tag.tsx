@@ -27,7 +27,7 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     padding: theme.spacing(0.2),
   },
   text: {
-    ...theme.typography.body2,
+    ...theme.typography.body3,
     textTransform: "uppercase",
   },
 }));

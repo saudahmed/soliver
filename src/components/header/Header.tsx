@@ -30,7 +30,7 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     color: theme.palette.primary.main,
   },
   subheadingText: {
-    ...theme.typography.body2,
+    ...theme.typography.body3,
     color: theme.palette.primary.main,
   },
 }));
@@ -46,7 +46,9 @@ const Header = ({
   return (
     <View {...rest} style={styles.header} testID="header">
       <Text style={styles.headingText}>{headingText}</Text>
-      <Text style={styles.subheadingText}>{subHeadingText}</Text>
+      {subHeadingText && (
+        <Text style={styles.subheadingText}>{subHeadingText}</Text>
+      )}
     </View>
   );
 };

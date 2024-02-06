@@ -36,6 +36,12 @@ export interface IButtonCircle extends IButton {
 export interface IButtonColor extends IButton {
   color: string;
   selected: boolean;
+  buttonSize?: number;
+}
+
+export interface IButtonSelect extends IButton {
+  text: string;
+  selected: boolean;
 }
 
 export interface ITag {

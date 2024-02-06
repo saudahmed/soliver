@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { BottomTabNavigator } from "src/navigators/tabNavigators";
+import RootStackNavigator from "src/navigators/rootStackNavigator/RootStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -34,7 +34,7 @@ export default function App() {
         <SafeAreaProvider>
           <Container onLayout={onLayoutRootView}>
             <NavigationContainer>
-              <BottomTabNavigator />
+              <RootStackNavigator />
             </NavigationContainer>
           </Container>
         </SafeAreaProvider>

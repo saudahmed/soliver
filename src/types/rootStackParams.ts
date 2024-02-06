@@ -1,4 +1,9 @@
+import { IArticle } from ".";
+
 export type RootStackParamList = {
+  BottomTabScreen: undefined;
+  FilterScreen: { articles: IArticle[] };
+
   HomeScreen: undefined;
 
   CategoriesScreen: undefined;

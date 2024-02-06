@@ -40,6 +40,7 @@ export type TypographyVariant =
   | "headlineXS"
   | "body1"
   | "body2"
+  | "body3"
   | "caption1Italic"
   | "caption2Italic";
 

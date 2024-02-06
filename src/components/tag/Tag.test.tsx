@@ -2,14 +2,14 @@ import { render } from "@testing-library/react-native";
 import Tag from "./Tag"; // adjust this import to your file structure
 
 describe("Tag", () => {
-  it("renders correctly", () => {
+  test("renders correctly", () => {
     const { getByText } = render(
       <Tag backgroundColor="green" textColor="white" text="Test" />
     );
     expect(getByText("Test")).toBeTruthy();
   });
 
-  it("applies styles", () => {
+  test("applies styles", () => {
     const { getByTestId } = render(
       <Tag text="Test" backgroundColor="red" textColor="white" />
     );

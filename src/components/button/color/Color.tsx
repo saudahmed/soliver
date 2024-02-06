@@ -20,36 +20,16 @@ import { IButtonColor } from "src/types";
  */
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => {
-  const buttonSize = 25;
-  const innerCircleBorderWidth = 2.3;
-  const innerCircleSize = buttonSize - innerCircleBorderWidth;
-
   return {
     button: {
-      width: buttonSize,
-      height: buttonSize,
-      borderRadius: buttonSize * 0.5,
-      alignItems: "center",
-      justifyContent: "center",
-      borderWidth: 1,
       borderColor: theme.palette.secondary.main,
       backgroundColor: theme.palette.common.white,
     },
     buttonSelected: {
-      width: buttonSize,
-      height: buttonSize,
-      borderRadius: buttonSize * 0.5,
-      alignItems: "center",
-      justifyContent: "center",
-      borderWidth: 1,
       borderColor: theme.palette.primary.main,
       backgroundColor: theme.palette.common.white,
     },
     innerCircle: {
-      width: innerCircleSize,
-      height: innerCircleSize,
-      borderRadius: innerCircleSize * 0.5,
-      borderWidth: innerCircleBorderWidth,
       borderColor: theme.palette.common.white,
     },
   };
@@ -58,21 +38,47 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => {
 const ButtonColor = ({
   color,
   selected,
+  buttonSize = 25,
   onButtonPress,
   ...rest
 }: IButtonColor) => {
   // Get styles and theme using the Theme provider
   const styles = useStyles();
 
+  const innerCircleBorderWidth = buttonSize * 0.08;
+  const innerCircleSize = buttonSize - innerCircleBorderWidth;
+
+  const buttonSizeStyle = {
+    width: buttonSize,
+    height: buttonSize,
+    borderRadius: buttonSize * 0.5,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+  };
+
   return (
     <Pressable
       {...rest}
-      style={selected ? styles.buttonSelected : styles.button}
+      style={
+        selected
+          ? [styles.buttonSelected, buttonSizeStyle]
+          : [styles.button, buttonSizeStyle]
+      }
       onPress={onButtonPress}
       testID="button-color"
     >
       <View
-        style={[styles.innerCircle, { backgroundColor: color }]}
+        style={[
+          styles.innerCircle,
+          {
+            backgroundColor: color,
+            width: innerCircleSize,
+            height: innerCircleSize,
+            borderRadius: innerCircleSize * 0.5,
+            borderWidth: innerCircleBorderWidth,
+          },
+        ]}
         testID="inner-circle"
       />
     </Pressable>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 import { IButton } from "src/types";
@@ -20,8 +20,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   button: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
+    paddingRight: theme.spacing(2),
+    paddingVertical: theme.spacing(0.5),
     alignItems: "center",
     justifyContent: "center",
   },
@@ -33,7 +33,7 @@ const ButtonCross = ({ onButtonPress, ...rest }: IButton) => {
   const theme = Theme.useTheme();
 
   return (
-    <TouchableOpacity
+    <Pressable
       {...rest}
       style={styles.button}
       onPress={onButtonPress}
@@ -42,11 +42,11 @@ const ButtonCross = ({ onButtonPress, ...rest }: IButton) => {
       {/* Close icon */}
       <MaterialCommunityIcons
         name={"close"}
-        size={18}
+        size={28}
         color={theme.palette.primary.main}
         testID="close-icon"
       />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

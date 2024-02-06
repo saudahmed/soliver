@@ -78,7 +78,7 @@ const SubCategories = ({
   }, []);
 
   return (
-    <Container paddingHorizontal={16}>
+    <Container paddingHorizontal={paddingHorizontal}>
       <View style={styles.sortFilterContainer}>
         <View style={styles.buttonContainer}>
           <ButtonIcon

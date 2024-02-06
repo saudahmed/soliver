@@ -22,12 +22,12 @@ const common = {
           width: 0,
           height: 2,
         },
-        shadowRadius: 3,
+        shadowRadius: 2,
         shadowOpacity: 1,
-        shadowColor: "rgba(0, 0, 0, 0.11)",
+        shadowColor: "rgba(0, 0, 0, 0.22)",
       },
       android: {
-        elevation: 3,
+        elevation: 4,
       },
     }),
   },
@@ -43,7 +43,7 @@ const common = {
       fontSize: getResponsiveFontSize(13),
     },
     headlineM: {
-      fontFamily: "Lato-Bold",
+      fontFamily: "Lato-Regular",
       fontSize: getResponsiveFontSize(11),
       lineHeight: getResponsiveFontSize(16),
     },
@@ -60,6 +60,10 @@ const common = {
       fontSize: getResponsiveFontSize(10),
     },
     body2: {
+      fontFamily: "Lato-Regular",
+      fontSize: getResponsiveFontSize(9),
+    },
+    body3: {
       fontFamily: "Lato-Regular",
       fontSize: getResponsiveFontSize(7.5),
     },

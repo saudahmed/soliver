@@ -33,30 +33,31 @@ describe("ButtonColor", () => {
     );
     const button = getByTestId("button-color");
 
-    expect(button.props.style.borderColor).toBe("#000000");
+    expect(button.props.style[0].borderColor).toBe("#000000");
   });
 
   test("displays unselected border color", () => {
-    const { getByTestId } = render(
+    const { queryByTestId } = render(
       <ButtonColor color="red" selected={false} onButtonPress={() => {}} />
     );
-    const button = getByTestId("button-color");
-    expect(button.props.style.borderColor).toBe("#bdbdbd");
+    const button = queryByTestId("button-color");
+    expect(button.props.style[0].borderColor).toBe("#bdbdbd");
   });
 
   test("applies styles", () => {
     const { getByTestId } = render(
       <ButtonColor color="red" selected onButtonPress={() => {}} />
     );
-    expect(getByTestId("button-color").props.style).toEqual({
-      width: 25,
-      height: 25,
-      borderRadius: 12.5,
-      alignItems: "center",
-      justifyContent: "center",
-      borderWidth: 1,
-      borderColor: "#000000",
-      backgroundColor: "#ffffff",
-    });
+    expect(getByTestId("button-color").props.style).toEqual([
+      { backgroundColor: "#ffffff", borderColor: "#000000" },
+      {
+        alignItems: "center",
+        borderRadius: 12.5,
+        borderWidth: 1,
+        height: 25,
+        justifyContent: "center",
+        width: 25,
+      },
+    ]);
   });
 });

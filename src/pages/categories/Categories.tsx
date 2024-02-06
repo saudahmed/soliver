@@ -82,7 +82,7 @@ const Categories = ({
   }, []);
 
   return (
-    <Container paddingHorizontal={16}>
+    <Container paddingHorizontal={paddingHorizontal}>
       <View style={styles.sortFilterContainer}>
         <View style={styles.buttonContainer}>
           <ButtonIcon
@@ -99,38 +99,44 @@ const Categories = ({
             border={false}
             iconPosition="left"
             iconName="filter-variant"
-            onButtonPress={() => {}}
+            onButtonPress={() => {
+              navigation.navigate("FilterScreen", {
+                articles: articles,
+              });
+            }}
           />
         </View>
       </View>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        style={{ marginVertical: 12 }}
-      >
-        <View style={{ flexDirection: "row" }}>
-          {articleCategories.map((category, index) => (
-            <View
-              style={styles.categoriesButtonContainer}
-              key={`category_button_${index}`}
-            >
-              <ButtonIcon
-                key={index}
-                iconPosition="right"
-                text={category}
-                border
-                iconName="chevron-right"
-                onButtonPress={() => {
-                  //Navigate to the SubCategories route with params */
-                  navigation.navigate("SubCategoriesScreen", {
-                    category,
-                  });
-                }}
-              />
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      <View>
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          style={{ marginVertical: 12 }}
+        >
+          <View style={{ flexDirection: "row" }}>
+            {articleCategories.map((category, index) => (
+              <View
+                style={styles.categoriesButtonContainer}
+                key={`category_button_${index}`}
+              >
+                <ButtonIcon
+                  key={index}
+                  iconPosition="right"
+                  text={category}
+                  border
+                  iconName="chevron-right"
+                  onButtonPress={() => {
+                    //Navigate to the SubCategories route with params */
+                    navigation.navigate("SubCategoriesScreen", {
+                      category,
+                    });
+                  }}
+                />
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      </View>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={articles}
