@@ -96,6 +96,7 @@ const CategoryCard = ({
           style={styles.image}
           source={data.colorVariants[selectedColorIndex].pictures.front}
           contentFit="cover"
+          cachePolicy="memory-disk"
           transition={0}
         />
         <View style={styles.circleButtonContainer}>
