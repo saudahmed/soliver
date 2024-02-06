@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import rootReducer from "./reducers";
 import { useDispatch as useReduxDispatch } from "react-redux";
@@ -27,6 +28,12 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+let middlewares = [];
+// add logger middleware when app is running in debug mode
+if (__DEV__) {
+  middlewares = [logger];
+}
+
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: __DEV__ === true,
@@ -35,7 +42,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(middlewares),
 });
 
 export * from "./thunks/categoriesThunks";
@@ -44,3 +51,12 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useDispatch = () => useReduxDispatch<AppDispatch>();
 export const persistor = persistStore(store);
+
+export {
+  initializeSelectedColors,
+  setSelectedColors,
+  initializeSelectedBrands,
+  setSelectedBrands,
+  setMinPrice,
+  setMaxPrice,
+} from "./slices/filterArticlesSlice";
