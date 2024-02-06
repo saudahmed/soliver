@@ -4,6 +4,7 @@ import RootStackNavigator from "src/navigators/rootStackNavigator/RootStackNavig
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Container from "src/components/container/Container";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
@@ -32,11 +33,13 @@ export default function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <SafeAreaProvider>
-          <Container onLayout={onLayoutRootView}>
-            <NavigationContainer>
-              <RootStackNavigator />
-            </NavigationContainer>
-          </Container>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <Container onLayout={onLayoutRootView}>
+              <NavigationContainer>
+                <RootStackNavigator />
+              </NavigationContainer>
+            </Container>
+          </GestureHandlerRootView>
         </SafeAreaProvider>
       </PersistGate>
     </Provider>

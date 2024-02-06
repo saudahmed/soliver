@@ -110,3 +110,16 @@ export interface IDividerProps extends ViewProps {
   fullWidth?: boolean;
   style?: any;
 }
+
+export interface IScrollPickerProps {
+  list: Array<{ value: string; label: string }>;
+  onItemPress: (value: string) => void;
+  currentValue: string;
+}
+
+export interface IValuePickerProps extends ViewProps {
+  title: string;
+  data: Array<{ value: string; label: string }>;
+  value: string;
+  setUserValue: (value: string) => void;
+}

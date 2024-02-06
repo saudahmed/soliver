@@ -1,11 +1,13 @@
-import { useEffect, useCallback, useState, useMemo } from "react";
+import { useEffect, useCallback, useState, useMemo, useRef } from "react";
 import {
   View,
+  Text,
   ScrollView,
   Dimensions,
   FlatList,
   RefreshControl,
 } from "react-native";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { useFilterArticles } from "src/hooks/filter";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
@@ -18,9 +20,11 @@ import CategoryCard from "src/components/categoryCard/CategoryCard";
 import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 
+import { sortData } from "src/constants";
 import { fetchAllArticles, useDispatch, RootState } from "src/store";
 import SafeAreaContainer from "src/components/safeAreaContainer/SafeAreaContainer";
 import HorizontalDivider from "src/components/divider/Horizontal";
+import ScrollPicker from "src/components/valuePicker/ScrollPicker";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -35,17 +39,39 @@ export const useStyles = Theme.makeStyles((theme: ITheme) => ({
     paddingRight: 8,
     height: "auto",
   },
+  bottomSheetContainer: {
+    ...theme.shadow,
+  },
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: theme.palette.common.white,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "flex-start",
+    paddingHorizontal: 16,
+  },
+  sheetView: {
+    marginVertical: 10,
+  },
+  title: {
+    ...theme.typography.body1,
+    color: theme.palette.primary.main,
+    textAlign: "center",
+  },
 }));
 
 const Categories = ({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, "CategoriesScreen">) => {
   const styles = useStyles();
-  const { articles, isArticlesLoading, articleCategories } = useSelector(
-    (state: RootState) => {
-      return state.categories;
-    }
-  );
+  const [sorting, setSorting] = useState("ascending");
+  const bottomSheetRef = useRef<BottomSheet>(null);
+  const snapPoints = useMemo(() => ["20%"], []);
+  const { articles, articleCategories } = useSelector((state: RootState) => {
+    return state.categories;
+  });
 
   const { filteredArticles } = useFilterArticles(articles, "filterArticles");
 
@@ -63,6 +89,17 @@ const Categories = ({
       setRefreshing(false);
     });
   }, []);
+
+  const handleSheetChanges = useCallback((index: number) => {}, []);
+
+  const sortArticles = useCallback(
+    (order) => {
+      return [...filteredArticles].sort((a, b) => {
+        return order === "ascending" ? a.price - b.price : b.price - a.price;
+      });
+    },
+    [filteredArticles]
+  );
 
   const paddingHorizontal = 16;
   const numColumns = 2;
@@ -92,11 +129,17 @@ const Categories = ({
         <View style={styles.sortFilterContainer}>
           <View style={styles.buttonContainer}>
             <ButtonIcon
-              text="Beliebteste"
+              text={
+                sorting === "ascending"
+                  ? "Preis aufsteigend"
+                  : "Preis absteigend"
+              }
               border={false}
               iconPosition="left"
               iconName="sort"
-              onButtonPress={() => {}}
+              onButtonPress={() => {
+                bottomSheetRef.current.expand();
+              }}
             />
           </View>
           <View style={styles.buttonContainer}>
@@ -147,7 +190,7 @@ const Categories = ({
         </View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={filteredArticles}
+          data={sortArticles(sorting)}
           renderItem={renderItem}
           numColumns={numColumns}
           contentContainerStyle={{ gap }}
@@ -158,6 +201,28 @@ const Categories = ({
           }
         />
       </Container>
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={-1}
+        style={styles.bottomSheetContainer}
+        enablePanDownToClose
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}
+      >
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>{"Sortieren"}</Text>
+          <View style={styles.sheetView}>
+            <ScrollPicker
+              currentValue={sorting}
+              list={sortData}
+              onItemPress={(value: string) => {
+                setSorting(value);
+                bottomSheetRef.current.close();
+              }}
+            />
+          </View>
+        </View>
+      </BottomSheet>
     </SafeAreaContainer>
   );
 };
