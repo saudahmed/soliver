@@ -5,6 +5,7 @@ import Categories from "src/pages/categories/Categories";
 import SubCategories from "src/pages/subCategories/SubCategories";
 import { RootState } from "src/store";
 import { useSelector } from "react-redux";
+import { useFilterArticles } from "src/hooks/filter";
 
 import Header from "src/components/header/Header";
 import ButtonBack from "src/components/button/back/back";
@@ -12,11 +13,13 @@ import ButtonBack from "src/components/button/back/back";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
-  const { categoriesTotal, subCategoriesTotal } = useSelector(
+  const { articles, categoriesTotal, subCategoriesTotal } = useSelector(
     (state: RootState) => {
       return state.categories;
     }
   );
+
+  const { filteredArticles } = useFilterArticles(articles);
 
   return (
     <Stack.Navigator
@@ -33,7 +36,7 @@ const StackNavigator = () => {
             headerTitle: () => (
               <Header
                 headingText="New"
-                subHeadingText={`${categoriesTotal}  Artikel`}
+                subHeadingText={`${filteredArticles.length}  Artikel`}
               />
             ),
             // headerLeft: () => <ButtonBack onButtonPress={() => {}} />,

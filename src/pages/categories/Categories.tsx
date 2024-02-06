@@ -6,6 +6,7 @@ import {
   FlatList,
   RefreshControl,
 } from "react-native";
+import { useFilterArticles } from "src/hooks/filter";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 
@@ -44,6 +45,8 @@ const Categories = ({
       return state.categories;
     }
   );
+
+  const { filteredArticles } = useFilterArticles(articles);
 
   const dispatch = useDispatch();
 
@@ -141,7 +144,7 @@ const Categories = ({
         </View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={articles}
+          data={filteredArticles}
           renderItem={renderItem}
           numColumns={numColumns}
           contentContainerStyle={{ gap }}
