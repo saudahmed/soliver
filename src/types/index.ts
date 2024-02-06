@@ -44,6 +44,11 @@ export interface IButtonSelect extends IButton {
   selected: boolean;
 }
 
+export interface IButtonPrimary extends IButton {
+  text: string;
+  enabled: boolean;
+}
+
 export interface ITag {
   backgroundColor: string;
   textColor: string;

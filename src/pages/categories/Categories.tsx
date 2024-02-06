@@ -18,6 +18,7 @@ import { ITheme } from "src/assets/themes";
 import { Theme } from "src/hooks";
 
 import { fetchAllArticles, useDispatch, RootState } from "src/store";
+import SafeAreaContainer from "src/components/safeAreaContainer/SafeAreaContainer";
 
 export const useStyles = Theme.makeStyles((theme: ITheme) => ({
   sortFilterContainer: {
@@ -82,74 +83,76 @@ const Categories = ({
   }, []);
 
   return (
-    <Container paddingHorizontal={paddingHorizontal}>
-      <View style={styles.sortFilterContainer}>
-        <View style={styles.buttonContainer}>
-          <ButtonIcon
-            text="Beliebteste"
-            border={false}
-            iconPosition="left"
-            iconName="sort"
-            onButtonPress={() => {}}
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <ButtonIcon
-            text="Filter"
-            border={false}
-            iconPosition="left"
-            iconName="filter-variant"
-            onButtonPress={() => {
-              navigation.navigate("FilterScreen", {
-                articles: articles,
-              });
-            }}
-          />
-        </View>
-      </View>
-      <View>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          style={{ marginVertical: 12 }}
-        >
-          <View style={{ flexDirection: "row" }}>
-            {articleCategories.map((category, index) => (
-              <View
-                style={styles.categoriesButtonContainer}
-                key={`category_button_${index}`}
-              >
-                <ButtonIcon
-                  key={index}
-                  iconPosition="right"
-                  text={category}
-                  border
-                  iconName="chevron-right"
-                  onButtonPress={() => {
-                    //Navigate to the SubCategories route with params */
-                    navigation.navigate("SubCategoriesScreen", {
-                      category,
-                    });
-                  }}
-                />
-              </View>
-            ))}
+    <SafeAreaContainer>
+      <Container paddingHorizontal={paddingHorizontal}>
+        <View style={styles.sortFilterContainer}>
+          <View style={styles.buttonContainer}>
+            <ButtonIcon
+              text="Beliebteste"
+              border={false}
+              iconPosition="left"
+              iconName="sort"
+              onButtonPress={() => {}}
+            />
           </View>
-        </ScrollView>
-      </View>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={articles}
-        renderItem={renderItem}
-        numColumns={numColumns}
-        contentContainerStyle={{ gap }}
-        columnWrapperStyle={{ gap }}
-        keyExtractor={(item) => item.id}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      />
-    </Container>
+          <View style={styles.buttonContainer}>
+            <ButtonIcon
+              text="Filter"
+              border={false}
+              iconPosition="left"
+              iconName="filter-variant"
+              onButtonPress={() => {
+                navigation.navigate("FilterScreen", {
+                  articles: articles,
+                });
+              }}
+            />
+          </View>
+        </View>
+        <View>
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            style={{ marginVertical: 12 }}
+          >
+            <View style={{ flexDirection: "row" }}>
+              {articleCategories.map((category, index) => (
+                <View
+                  style={styles.categoriesButtonContainer}
+                  key={`category_button_${index}`}
+                >
+                  <ButtonIcon
+                    key={index}
+                    iconPosition="right"
+                    text={category}
+                    border
+                    iconName="chevron-right"
+                    onButtonPress={() => {
+                      //Navigate to the SubCategories route with params */
+                      navigation.navigate("SubCategoriesScreen", {
+                        category,
+                      });
+                    }}
+                  />
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={articles}
+          renderItem={renderItem}
+          numColumns={numColumns}
+          contentContainerStyle={{ gap }}
+          columnWrapperStyle={{ gap }}
+          keyExtractor={(item) => item.id}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        />
+      </Container>
+    </SafeAreaContainer>
   );
 };
 

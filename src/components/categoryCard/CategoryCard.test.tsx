@@ -44,7 +44,7 @@ describe("CategoryCard", () => {
     ],
   };
 
-  it("renders correctly", () => {
+  test("renders correctly", () => {
     const { getByText, getByTestId } = render(
       <CategoryCard
         data={data}
@@ -60,7 +60,7 @@ describe("CategoryCard", () => {
     });
   });
 
-  // it("handles like button press", () => {
+  // test("handles like button press", () => {
   //   const onPress = jest.fn();
   //   const { getByTestId } = render(
   //     <CategoryCard
@@ -74,7 +74,7 @@ describe("CategoryCard", () => {
   //   expect(onPress).toHaveBeenCalledWith(data.id);
   // });
 
-  // it("handles order button press", () => {
+  // test("handles order button press", () => {
   //   const onOrderButtonPressMock = jest.fn();
   //   const { getByTestId } = render(
   //     <CategoryCard
@@ -87,7 +87,7 @@ describe("CategoryCard", () => {
   //   expect(onOrderButtonPressMock).toHaveBeenCalledWith(data.id);
   // });
 
-  // it("handles color button press", () => {
+  // test("handles color button press", () => {
   //   const { getByTestId } = render(<CategoryCard data={data} cardSize={100} />);
   //   fireEvent.press(getByTestId("color_0"));
   //   expect(getByTestId("color_0").props.selected).toBe(true);
