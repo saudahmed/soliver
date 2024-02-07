@@ -15,7 +15,9 @@ Please follow the given link for expo command line setup (https://docs.expo.dev/
 
 Please follow the given link to setup Expo Go (https://docs.expo.dev/get-started/expo-go/)
 
-The project works with NodeJS 18 and above. Please make sure through your node versioning system you are using NOdeJS 18 and above.
+The project works with NodeJS 18 and above. Please make sure through your node versioning system you are using NodeJS 18 and above. Please use simulator as we are using a simple JSON server. Currently JSON server running cannot communicate with Android virtual device.
+
+Android virutal device not connecting to json-server is a known issue. Tried this solution (https://dsinecos.github.io/blog/How-to-call-a-locally-hosted-server-from-expo-app) but it fails to work with Expo SDK 50.
 
 ## 🚀 How to use
 
