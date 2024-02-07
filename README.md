@@ -1,4 +1,4 @@
-# TypeScript Example
+# SOliver
 
 <p>
   <!-- iOS -->
@@ -9,28 +9,42 @@
   <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
 </p>
 
-```sh
-npx create-react-native-app -t with-typescript
-```
+This project was bootstrapped with (https://github.com/expo/examples/tree/master/with-typescript). I have used these packages:
 
-TypeScript is a superset of JavaScript which gives you static types and powerful tooling in Visual Studio Code including autocompletion and useful inline warnings for type errors.
+Please follow the given link for expo command line setup (https://docs.expo.dev/get-started/installation/)
+
+Please follow the given link to setup Expo Go (https://docs.expo.dev/get-started/expo-go/)
+
+The project works with NodeJS 18 and above. Please make sure through your node versioning system you are using NOdeJS 18 and above.
 
 ## 🚀 How to use
 
-#### Creating a new project
+### Change Directory
 
-- Install the CLI: `npm i -g expo-cli`
-- Create a project: `npx create-react-native-app -t with-typescript`
-- `cd` into the project
+`cd soliver`
 
-### Adding TypeScript to existing projects
+### Install Dependencies
 
-- Create a blank TypeScript config: `touch tsconfig.json`
-- Run `yarn start` or `npm run start` to automatically configure TypeScript
-- Rename files to TypeScript, `.tsx` for React components and `.ts` for plain typescript files
+Install all the dependencies listed within package.json in the local node_modules folder.
 
-> 💡 You can disable the TypeScript setup in Expo CLI with the environment variable `EXPO_NO_TYPESCRIPT_SETUP=1 expo start`
+`yarn install`
 
-## 📝 Notes
 
-- [Expo TypeScript guide](https://docs.expo.dev/versions/latest/guides/typescript/)
+### Start the development server
+
+To start the development server, run the following command:
+
+`npx expo start`
+
+### Start the Json server (MUST)
+
+Open a new Terminal and run the following command to start the JSON server.
+
+`npx json-server src/mockDatabase/db.json`
+
+### Run tests and coverage report
+
+Open a new Terminal and run the following command to start tests
+
+`yarn test`
+`yarn coverage`
