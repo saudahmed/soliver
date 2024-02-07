@@ -11,7 +11,13 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator = () => {
   return (
-    <RootStack.Navigator initialRouteName="BottomTabScreen">
+    <RootStack.Navigator
+      initialRouteName="BottomTabScreen"
+      screenOptions={{
+        headerTitleAlign: "center",
+        headerBackVisible: false,
+      }}
+    >
       <RootStack.Group>
         <RootStack.Screen
           name="BottomTabScreen"

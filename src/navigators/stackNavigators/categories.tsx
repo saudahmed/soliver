@@ -34,6 +34,8 @@ const StackNavigator = () => {
       initialRouteName="CategoriesScreen"
       screenOptions={{
         headerShadowVisible: false,
+        headerTitleAlign: "center",
+        headerBackVisible: false,
       }}
     >
       <Stack.Group>
