@@ -1,6 +1,8 @@
 import axios from "axios";
+import { Platform } from "react-native";
 
-const API_BASE_URL = "http://10.0.2.2:3000";
+const API_BASE_URL =
+  Platform.OS === "ios" ? "http://localhost:3000" : "http://10.0.2.2:3000";
 
 const apiService = axios.create({
   baseURL: API_BASE_URL,
